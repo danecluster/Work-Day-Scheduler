@@ -23,6 +23,21 @@ $(function () {
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
     //
+    function colorUpdate(){
+      let rightNow=dayjs().hour()
+      console.log(rightNow)
+      $(".time-block").each(function(){
+        var blockIds=parseInt($(this).attr("id").split("-")[1])
+        if (blockIds < rightNow){
+          $(this).addClass("past")
+        }else if(blockIds===rightNow){
+          $(this).addClass("present")
+        }else {
+          $(this).addClass("future")
+        }
+      })
+    }
+    colorUpdate()
     
     // TODO: Add code to display the current date in the header of the page.
   });
